@@ -1,4 +1,4 @@
-package compilador
+package token
 
 import (
 	"fmt"
@@ -19,10 +19,9 @@ const (
 	ILLEGAL                     // token ilegal o desconocido
 	INT                         // enteros
 	LBRACE                      // {
-	LET                         // let
+	HATSUNE                     // hatsune (forma de declarar variables)
 	LPAREN                      // (
 	PLUS                        // +
-	MINUS						// -
 	RBRACE                      // }
 	RPAREN                      // )
 	SEMICOLON                   // ;
@@ -51,8 +50,8 @@ func (t TokenType) String() string {
 		return "INT"
 	case LBRACE:
 		return "LBRACE"
-	case LET:
-		return "LET"
+	case HATSUNE:
+		return "HATSUNE"
 	case LPAREN:
 		return "LPAREN"
 	case PLUS:
@@ -63,8 +62,6 @@ func (t TokenType) String() string {
 		return "RPAREN"
 	case SEMICOLON:
 		return "SEMICOLON"
-	case MINUS:
-		return "MINUS"
 	default:
 		return "UNKNOWN"
 	}
@@ -84,7 +81,7 @@ func (t Token) String() string {
 // mapa de palabras clave que asocia literales con su TokenType.
 var keywords = map[string]TokenType{
 	"function": FUNCTION,
-	"let":      LET,
+	"hatsune":  HATSUNE,
 	"for":      FOR,
 }
 
