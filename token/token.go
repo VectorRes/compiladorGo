@@ -93,3 +93,12 @@ func LookupTokenType(literal string) TokenType {
 	}
 	return IDENT
 }
+
+// New crea un nuevo Token.
+func New(tokenType TokenType, literal string) Token {
+	return Token{
+		Type:    tokenType,
+		Literal: literal,
+	}
+}
+
